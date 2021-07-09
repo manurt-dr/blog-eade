@@ -1,17 +1,19 @@
 import React from 'react'
 import { connect, Global, css, styled, Head } from 'frontity'
-import Link from '@frontity/components/link'
 import Switch from "@frontity/components/switch"
-import List from "./list"
+import List from "./list/list"
 import Post from "./post"
 import Page from "./page"
 import Loading from "./loading"
 import Error from "./error"
+import Header from "./header"
 
 const Root = ({ state, actions }) => {
     const data = state.source.get(state.router.link)
     return (
         <>
+          <Header>
+          </Header>
           <Head>
             <title>My first Frontity Theme</title>
             <meta
@@ -25,23 +27,22 @@ const Root = ({ state, actions }) => {
               margin: 0;
               padding: 0;
               box-sizing: border-box;
+              --primary-blue: #3E9DC9;
+              --darkest-blue: #116C96;
+              --light-red: #E35D6F;
+              --primary-red: #C93E51;
+              --black: #293133;
+              --light-gray: #DAE3E6;
+              --gray: #8A9799;
           }  
           html {
             font-family: system-ui, Verdana, Arial, sans-serif;
           }
+          body{
+            background-color: var(--light-gray);
+          }
         `}
       />
-        <Header isPostType={data.isPostType} isPage={data.isPage}>
-          <HeaderContent>
-                <h1>Hello Frontity</h1>
-                { state.theme.isUrlVisible ? <p>Current URL: {state.router.link}</p> : null }
-                <Menu>
-                  <Link link="/">Home</Link>
-                  <Link link="/destinations">Destinations</Link>
-                  <Link link="/about-us">About Us</Link>
-                </Menu>
-          </HeaderContent>      
-        </Header>
             <main>
               <Switch>
                   <Loading when={data.isFetching} />
@@ -51,16 +52,6 @@ const Root = ({ state, actions }) => {
                   <Page when={data.isDestinations} />
                   <Error  when={data.isError} />
               </Switch>
-          {
-        state.theme.isUrlVisible ? (
-    <>
-      Current URL: {state.router.link}{" "}
-      <Button onClick={actions.theme.toggleUrl}>&#x3c; Hide URL</Button>
-    </>
-  ) : (
-    <Button onClick={actions.theme.toggleUrl}>Show URL &#x3e;</Button>
-  )
-}
             </main>
         </>
       )
@@ -68,21 +59,6 @@ const Root = ({ state, actions }) => {
 
 export default connect(Root);
 
-const Header = styled.header`
-background-color: #e5edee;
-border-width: 0 0 8px 0;
-border-style: solid;
-border-color: ${props => props.isPostType ? ( props.isPage ? 'lightsteelblue' : 'red' ) : 'maroon'};
-
-h1 {
-  color: #4a4a4a;
-}
-`
-const HeaderContent = styled.div`
-  max-width: 800px;
-  padding: 2em 1em;
-  margin: auto;
-`
 const Main = styled.main`
   max-width: 800px;
   padding: 1em;
@@ -102,17 +78,6 @@ const Main = styled.main`
     color: #828282;
     font-size: 0.8em;
     margin-bottom: 1em;
-  }
-`
-
-const Menu = styled.nav`
-  display: flex;
-  flex-direction: row;
-  margin-top: 1em;
-  & > a {
-    margin-right: 1em;
-    color: steelblue;
-    text-decoration: none;
   }
 `
 
