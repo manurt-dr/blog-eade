@@ -1,22 +1,23 @@
 import Root from "./components"
 import link from "@frontity/html2react/processors/link"
 
-const myFirstTheme = {
-  name: "my-first-theme",
+
+const economicBlog = {
+  name: "economic-blog",
   roots: {
     theme: Root,
   },
   state: {
     theme: {
       isUrlVisible: false,
+      featured: {
+        showOnList: false,
+        showOnPost: false,
+      }
     },
   },
   actions: {
-    theme: {
-      toggleUrl: ({ state }) => {
-        state.theme.isUrlVisible = !state.theme.isUrlVisible
-      },
-    },
+    theme: {},
   },
   libraries: {
     html2react: {
@@ -25,4 +26,4 @@ const myFirstTheme = {
   }
 }
 
-export default myFirstTheme
+export default economicBlog

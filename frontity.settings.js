@@ -9,20 +9,13 @@ const settings = {
   },
   "packages": [
     {
-      "name": "my-first-theme",
+      "name": "economic-blog",
     },
     {
       "name": "@frontity/wp-source",
       "state": {
         "source": {
-          "url": "http://www.elartedelaeconomia.com/",
-          "postTypes": [
-            {
-              type: "destinations",
-              endpoint: "destinations",
-              archive: "/destinations"
-            }
-          ]
+          "url": "https://www.elartedelaeconomia.com/",
         }
       }
     },
