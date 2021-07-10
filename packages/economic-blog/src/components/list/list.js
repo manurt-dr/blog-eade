@@ -14,13 +14,13 @@ const List = ({ state, actions, libraries }) => {
  
       {data.items.map((item) => {
         const post = state.source[item.type][item.id]
-         const { ref, inView } = useInView({threshold: 1, rootMargin: "0px 0px -100px 0px" });
+         const { ref, inView } = useInView({threshold: 1, rootMargin: "0px 0px -60px 0px"});
         return( 
           
 
             <SinglePost inView={inView} ref={ref} id="SinglePost" isDestinationsArchive={data.isDestinationsArchive}>
               <Link key={item.id} link={post.link}>
-                {post.title.rendered}
+                <h2>{post.title.rendered}</h2>
               <br />
               </Link>
               <Excerpt>
@@ -70,6 +70,8 @@ const Items = styled.div`
     font-weight: 700;
   }
   padding: 10px;
+  max-width: 500px;
+  margin: auto;
 `
 
 const PrevNextNav = styled.div`
@@ -95,32 +97,49 @@ const Excerpt = styled.div`
 `
 
 const SinglePost = styled.div`
-  margin-bottom: 30px; 
-  padding: 20px 30px 40px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 25px 0px 25px 0px; 
+  padding: 30px 30px 70px 30px;
   background-color: white; 
-  border-width: 0 0 2px 0;
+  border-width: 0 0 3px 0;
   border-style: solid;
   border-color: var(--light-red);
+  & >  h2 {
+    margin: 6px 0;
+    font-size: 1.1em;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 700;
+    margin: 6px 0;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 700;
+  }
+
 
 
   ${(props) => (props.inView ? 
     `
-    transform: scale3d(1.01, 1.01, 0.7);
-
+    border-color: var(--primary-red);
+    transform: scale3d(1.01, 1, 1.9);
+    box-shadow:  2px 2px 40px var(--dark-red);
+    transition-duration: 1s;
+    transition-property: transform, box-shadow, border-color;
+/*
     @keyframes animation1 {
-    from { box-shadow:  4px 4px 10px #5eb9e499;
-      transform: scale3d(1, 1, 0.8)
+    from { box-shadow:  4px 4px 10px var(--primary-blue);
         }
-    to { box-shadow:  4px 4px 30px var(--light-red);
-         
+    to { box-shadow:  4px 4px 30px var(--primary-red);
     }
  }
   animation-name: animation1;
-   animation-duration: 4s;
+   animation-duration: 2s;
    animation-timing-function: linear;
-   animation-delay: 0s;
+   animation-delay: 0;
    animation-iteration-count:  infinite;
-   animation-direction: alternate;` 
+   animation-direction: alternate; */` 
    : "")}
   
 `

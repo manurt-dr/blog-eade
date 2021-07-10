@@ -24,6 +24,7 @@ const Root = ({ state, actions }) => {
         <Global
         styles={css`
           * {
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
               margin: 0;
               padding: 0;
               box-sizing: border-box;
@@ -31,6 +32,7 @@ const Root = ({ state, actions }) => {
               --darkest-blue: #116C96;
               --light-red: #E35D6F;
               --primary-red: #C93E51;
+              --dark-red: #B02538;
               --black: #293133;
               --light-gray: #DAE3E6;
               --gray: #8A9799;
@@ -39,7 +41,9 @@ const Root = ({ state, actions }) => {
             font-family: system-ui, Verdana, Arial, sans-serif;
           }
           body{
+            font-family: 'Lato', sans-serif;
             background-color: var(--light-gray);
+            text-rendering: optimizeLegibility;
           }
         `}
       />
