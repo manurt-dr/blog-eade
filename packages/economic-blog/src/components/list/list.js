@@ -105,7 +105,7 @@ const SinglePost = styled.div`
 
   ${(props) => (props.inView ? 
     `
-    transform: scale3d(1.01, 1.01, 1);
+    transform: scale3d(1.01, 1.01, 0.7);
 
     @keyframes animation1 {
     from { box-shadow:  4px 4px 10px #5eb9e499;
@@ -116,7 +116,7 @@ const SinglePost = styled.div`
     }
  }
   animation-name: animation1;
-   animation-duration: 2s;
+   animation-duration: 4s;
    animation-timing-function: linear;
    animation-delay: 0s;
    animation-iteration-count:  infinite;
