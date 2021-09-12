@@ -7,6 +7,7 @@ import Page from "./page"
 import Loading from "./loading"
 import Error from "./error"
 import Header from "./header"
+import Footer from "./footer"
 
 const Root = ({ state, actions }) => {
     const data = state.source.get(state.router.link)
@@ -15,7 +16,7 @@ const Root = ({ state, actions }) => {
           <Header>
           </Header>
           <Head>
-            <title>My first Frontity Theme</title>
+            <title>El Arte de la Economía</title>
             <meta
               name="description"
               content="Based on the Frontity step by step tutorial"
@@ -23,8 +24,8 @@ const Root = ({ state, actions }) => {
           </Head>
         <Global
         styles={css`
-          * {
         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+        * {
               margin: 0;
               padding: 0;
               box-sizing: border-box;
@@ -47,7 +48,7 @@ const Root = ({ state, actions }) => {
           }
         `}
       />
-            <main>
+            <Main>
               <Switch>
                   <Loading when={data.isFetching} />
                   <List when={data.isArchive} />
@@ -56,7 +57,9 @@ const Root = ({ state, actions }) => {
                   <Page when={data.isDestinations} />
                   <Error  when={data.isError} />
               </Switch>
-            </main>
+            </Main>
+            <Footer>
+          </Footer>
         </>
       )
 }

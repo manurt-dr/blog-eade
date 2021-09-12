@@ -20,20 +20,18 @@ const Post = ({ state, libraries}) => {
         <meta name="description" content={post.excerpt.rendered} />
       </Head>
       <PostContent>
-        <h2>{post.title.rendered}</h2>
+        <h1>{post.title.rendered}</h1>
+        <Html2React html={post.content.rendered} />
         <PostInfo>
           <p>
-            <strong>Posted: </strong>
+            <strong>Publicado: </strong>
             {formattedDate}
           </p>
           <p>
-            <strong>Author: </strong>
+            <strong>Autor: </strong>
             {author.name}
           </p>
-        </PostInfo> 
-      <img src={post._links["wp:featuredmedia"][0].href} />
-      
-        <Html2React html={post.content.rendered} />
+        </PostInfo>       
       </PostContent>
   </>
   )
@@ -56,15 +54,39 @@ const PostInfo = styled.div`
 const PostContent = styled.div `
   display: flex;
   flex-direction: column;
-  margin: 8px;
-  padding: 8px;
+  margin: 0 1.5rem 0 1.5rem;
+  padding: 10px 25px;
   background-color: white;
   line-height: 1.5;
   box-shadow:  2px 2px 5px #5eb9e499;
   & > p {
-    margin-bottom: 10px;
+    margin: 1em 0;
+    line-height: 1.6em;
   }
   & > h2 {
-    align-self: center;
+    text-align: center;
+    font-size: 22px;
+    color: var(--darkest-blue);
+    border-bottom: 1px solid var(--primary-blue);
+    width: 100%;
+    margin: 1em 0;
+  }
+  & > h1 {
+    text-align: center;
+    font-size: 32px;
+    color: var(--black);
+    width: 80%;
+    margin: 1em auto 1em auto;
+  }
+  
+  & > figure {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  & > figure > img {
+    width: 70%;
+    height: auto;
   }
 `

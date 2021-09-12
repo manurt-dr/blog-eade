@@ -11,10 +11,13 @@ const spin = keyframes`
 `
 
 const Spinner = styled.div`
-    border: 12px solid #eee;
-    border-top: 12px solid steelblue;
+    border: 15px solid var(--gray);
+    box-shadow: 0 0 50px var(--dark-red);
+    border-top: 15px solid var(--light-red);
     border-radius: 50%;
-    width: 80px;
-    height: 80px;
+    width: 160px;
+    height: 160px;
     animation: ${spin} 2s linear infinite;
+    margin: 38vh auto;
+    background: var(--darkest-blue);
 `
